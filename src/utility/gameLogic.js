@@ -10,8 +10,8 @@ export const checkIsWinner = (arr, playerId, rowIndex, columnIndex) => {
 }
 
 const checkHorizontally = (row, playerId, startIndex) => {
-    let counter = 0
-    let currentIndex = startIndex
+    let counter = 1
+    let currentIndex = startIndex + 1
 
     while (row[currentIndex] === playerId) {
         counter++
@@ -31,8 +31,8 @@ const checkHorizontally = (row, playerId, startIndex) => {
 }
 
 const checkVertically = (arr, playerId, columnIndex, rowIndex) => {
-    let counter = 0
-    let currentIndex = rowIndex
+    let counter = 1
+    let currentIndex = rowIndex + 1
 
     while (
         currentIndex < arr.length &&
@@ -56,7 +56,7 @@ const checkVertically = (arr, playerId, columnIndex, rowIndex) => {
 
 const checkIncreasingDiagonally = (arr, playerId, columnIndex, rowIndex) => {
     let counter = 0
-    let currentColumnIndex = columnIndex
+    let currentColumnIndex = columnIndex 
     let currentRowIndex = rowIndex
 
     while (
