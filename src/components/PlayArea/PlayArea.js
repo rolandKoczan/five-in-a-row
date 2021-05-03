@@ -1,8 +1,7 @@
 import { useSelector, useDispatch } from "react-redux"
 
-import {setSingleElement} from "../../store/board"
-import {nextPlayer} from "../../store/players"
-import {checkIsWinner} from "../../utility/gameLogic"
+import { setSingleElement } from "../../store/board"
+import { nextPlayer } from "../../store/players"
 
 import SingleSquare from "../SingleSquare/SingleSquare"
 
@@ -16,8 +15,8 @@ const PlayArea = () => {
 
     const returnPlayer = (id) => players.find((player) => player.id === id)
 
-    const onTileClicked = (symbol, y, x, playerId) => {
-        if (!symbol) {
+    const onTileClicked = (player, y, x, playerId) => {
+        if (player === undefined) {
             dispatch(setSingleElement({ y, x, playerId }))
             dispatch(nextPlayer())
         }
@@ -36,7 +35,7 @@ const PlayArea = () => {
                             symbol={player ? player.symbol : ""}
                             color={player ? player.color : "#fff"}
                             onTileClicked={() =>
-                                onTileClicked(player.symbol, y, x, currentPlayer)
+                                onTileClicked(player, y, x, currentPlayer)
                             }
                         />
                     )
