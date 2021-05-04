@@ -18,6 +18,7 @@ export const playersSlice = createSlice({
             },
         ],
         currentPlayer: 1,
+        winner: null,
     },
     reducers: {
         init: (state) => {
@@ -33,9 +34,15 @@ export const playersSlice = createSlice({
                 state.currentPlayer = state.players[0].id
             }
         },
+        resetWinner: (state) => {
+            state.winner = null
+        },
+        setWinner: (state, action) => {
+            state.winner = action.payload.playerId
+        },
     },
 })
 
-export const { init, nextPlayer } = playersSlice.actions
+export const { init, nextPlayer, resetWinner, setWinner } = playersSlice.actions
 
 export default playersSlice.reducer

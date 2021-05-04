@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"
 export const boardSlice = createSlice({
     name: "board",
     initialState: {
+        winnerCoordinates: null,
         tiles: [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -24,9 +25,20 @@ export const boardSlice = createSlice({
             const { x, y, playerId } = action.payload
             state.tiles[y][x] = playerId
         },
+        resetWinnerCoordinates: (state) => {
+            state.winnerCoordinates = null
+        },
+        setWinnerCoordinates: (state, action) => {
+            state.winnerCoordinates = action.payload
+        },
     },
 })
 
-export const { init, setSingleElement } = boardSlice.actions
+export const {
+    init,
+    setSingleElement,
+    resetWinnerCoordinates,
+    setWinnerCoordinates,
+} = boardSlice.actions
 
 export default boardSlice.reducer
