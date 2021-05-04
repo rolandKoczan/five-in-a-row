@@ -1,9 +1,11 @@
 import "./SingleSquare.css"
 
-const SingleSquare = ({symbol, color, onTileClicked }) => {
+const SingleSquare = ({ symbol, color, onTileClicked, isWinnerTile }) => {
     return (
         <div
-            className="SingleSquare"
+            className={`SingleSquare ${
+                isWinnerTile && "SingleSquare_highlighted"
+            }`}
             style={{ color: color, cursor: symbol ? "not-allowed" : "pointer" }}
             onClick={onTileClicked}
         >

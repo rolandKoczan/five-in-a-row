@@ -8,3 +8,7 @@
     width: 50px;
     font-size: 1.5rem;
 }
+
+.SingleSquare_highlighted {
+    background-color: rgb(138, 207, 138);
+}
