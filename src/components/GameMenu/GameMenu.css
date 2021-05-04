@@ -1,0 +1,27 @@
+.GameMenu {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    width: 400px;
+    border-radius: 10px;
+    background-color: rgb(205, 253, 219);
+}
+
+.GameMenu > div:nth-child(2) {
+    width: 100%;
+}
+
+.GameMenu .dimensionInput {
+    width: 45px;
+}
+
+.GameMenu h3 {
+    margin-top: 15px;
+}
+
+.GameMenu h5 {
+    margin-bottom: 10px;
+}
