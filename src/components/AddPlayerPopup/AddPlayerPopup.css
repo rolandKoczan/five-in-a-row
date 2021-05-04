@@ -1,0 +1,28 @@
+.AddPlayerPopup {
+    z-index: 10;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgb(205, 253, 219);
+    width: 360px;
+}
+
+.AddPlayerPopup > section:nth-child(2) {
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.AddPlayerPopup > section:nth-child(3) {
+    margin: 25px 0;
+}
+
+.AddPlayerPopup .singleColor {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    margin: 12px;
+}
+
+.AddPlayerPopup .singleColor_selected {
+    border: 5px rgb(190, 190, 190) solid;
+}
