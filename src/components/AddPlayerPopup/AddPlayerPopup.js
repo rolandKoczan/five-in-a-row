@@ -1,24 +1,14 @@
-import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+
+import { setIsAddingPlayer, setSelectedColor } from "../../store/gameMenu"
 
 import Backdrop from "../Backdrop/Backdrop"
 
 import "./AddPlayerPopup.css"
 
 const AddPlayerPopup = () => {
-    const [colors, setColors] = useState([
-        { id: 1, color: "red", selected: true },
-        { id: 2, color: "green", selected: false },
-        { id: 3, color: "yellow", selected: false },
-        { id: 4, color: "blue", selected: false },
-        { id: 5, color: "purple", selected: false },
-        { id: 6, color: "azure", selected: false },
-        { id: 7, color: "grey", selected: false },
-        { id: 8, color: "khaki", selected: false },
-        { id: 9, color: "pink", selected: false },
-        { id: 10, color: "magenta", selected: false },
-        { id: 11, color: "orange", selected: false },
-        { id: 12, color: "brown", selected: false },
-    ])
+    const colors = useSelector((state) => state.gameMenu.colors)
+    const dispatch = useDispatch()
 
     return (
         <Backdrop>
@@ -27,6 +17,7 @@ const AddPlayerPopup = () => {
                     <label for="playerName">Játékos neve:</label>
                     <input name="playerName" />
                 </section>
+                <h6>Válassz színt:</h6>
                 <section>
                     {colors.map(({ id, color, selected }) => (
                         <div
@@ -35,6 +26,7 @@ const AddPlayerPopup = () => {
                                 selected && "singleColor_selected"
                             }`}
                             style={{ backgroundColor: color }}
+                            onClick={() => dispatch(setSelectedColor(id))}
                         ></div>
                     ))}
                 </section>
@@ -46,7 +38,9 @@ const AddPlayerPopup = () => {
                     </select>
                 </section>
                 <button>Játékos hozzáadása</button>
-                <button>Mégse</button>
+                <button onClick={() => dispatch(setIsAddingPlayer(false))}>
+                    Mégse
+                </button>
             </div>
         </Backdrop>
     )
