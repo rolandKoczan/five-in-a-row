@@ -1,16 +1,24 @@
+import { useDispatch, useSelector } from "react-redux"
+
+import { setIsAddingPlayer } from "../../store/gameMenu"
+
 import AddPlayerPopup from "../AddPlayerPopup/AddPlayerPopup"
 
 import "./GameMenu.css"
 
 const GameMenu = () => {
+    const { isAddingPlayer } = useSelector((state) => state.gameMenu)
+    const dispatch = useDispatch()
     return (
         <div className="GameMenu">
-            <AddPlayerPopup />
-            <div>
+            {isAddingPlayer && <AddPlayerPopup />}
+            <div className="gameSettings">
                 <h3>Amőba játék</h3>
                 <section>
                     <h5>Játékosok:</h5>
-                    <button>Játékos hozzáadása</button>
+                    <button onClick={() => dispatch(setIsAddingPlayer(true))}>
+                        Játékos hozzáadása
+                    </button>
                 </section>
                 <section>
                     <h5>Pálya méretek:</h5>

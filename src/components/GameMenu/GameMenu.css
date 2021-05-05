@@ -10,7 +10,7 @@
     background-color: rgb(205, 253, 219);
 }
 
-.GameMenu > div:nth-child(2) {
+.GameMenu > .gameSettings {
     width: 100%;
 }
 
