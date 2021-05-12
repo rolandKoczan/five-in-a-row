@@ -4,22 +4,20 @@ export const boardSlice = createSlice({
     name: "board",
     initialState: {
         winnerCoordinates: null,
-        tiles: [
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        ],
+        tiles: [],
     },
     reducers: {
-        init: (state) => {
-            console.log(state)
+        init: (state, action) => {
+            const {height, width} = action.payload
+            const tiles = []
+            for(let i = 0; i < height; i++){
+                tiles.push([])
+                for(let x = 0; x < width; x++){
+                    tiles[i].push(0)
+                }
+            }
+            console.log(tiles)
+            state.tiles = tiles
         },
         setSingleElement: (state, action) => {
             const { x, y, playerId } = action.payload

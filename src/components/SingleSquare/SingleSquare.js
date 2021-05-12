@@ -4,7 +4,7 @@ const SingleSquare = ({ symbol, color, onTileClicked, isWinnerTile }) => {
     return (
         <div
             className={`SingleSquare ${
-                isWinnerTile && "SingleSquare_highlighted"
+                isWinnerTile ? "SingleSquare_highlighted" : ""
             }`}
             style={{ color: color, cursor: symbol ? "not-allowed" : "pointer" }}
             onClick={onTileClicked}

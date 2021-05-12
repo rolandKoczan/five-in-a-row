@@ -3,33 +3,21 @@ import { createSlice } from "@reduxjs/toolkit"
 export const playersSlice = createSlice({
     name: "players",
     initialState: {
-        players: [
-            {
-                id: 1,
-                name: "Béla",
-                symbol: "X",
-                color: "red",
-            },
-            {
-                id: 2,
-                name: "János",
-                symbol: "O",
-                color: "green",
-            },
-        ],
-        currentPlayer: 1,
+        players: [],
+        currentPlayer: null,
         winner: null,
     },
     reducers: {
-        init: (state) => {
-            console.log(state)
+        init: (state, action) => {
+            state.players = action.payload
+            state.currentPlayer = action.payload[0].id
         },
         nextPlayer: (state) => {
-            const nextPlayer = state.players.find(
-                (player) => player.id === state.currentPlayer + 1
+            const currentPlayerIndex = state.players.findIndex(
+                (player) => player.id === state.currentPlayer
             )
-            if (nextPlayer !== undefined) {
-                state.currentPlayer = nextPlayer.id
+            if (state.players[currentPlayerIndex + 1] !== undefined) {
+                state.currentPlayer = state.players[currentPlayerIndex + 1].id
             } else {
                 state.currentPlayer = state.players[0].id
             }
